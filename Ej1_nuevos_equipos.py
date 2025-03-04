@@ -10,24 +10,23 @@ El curso tiene los siguientes equipos:
     Los Ctrl+Z: Galilea, Jennifer, Juan.
 Este programa debe generar 6 nuevos equipos de 2 personas cada uno, pero con la restricción de que no puede haber dos personas que ya estuvieron en el mismo equipo de arriba ☝️.
 """
-from random import choice
+from random import random
 
 
 def generar_equipos() -> None:
     """
-    Función que muestra el máximo y mínimo con argumentos variables.
-    :param materia: Título del cálculo (en este caso, "Máximo y mínimo").
-    :param vargs: Tupla de números.
+    Función que genera equipos y muestra.
+
     """
     equipos = []
     lista = ["Hector","Addi","Jesus Aberto","Patricia","Tania","Rebeca","Jamileth","Bryan","Rosalinda","Galilea","Jennifer","Juan"]
-
-    equipos.append(choice(lista))
-    lista.remove(equipos[0])
+    nombre = random.choice(lista)
+    equipos.append(nombre)
+    lista.remove(nombre)
 
     i = 0
     while i < 6:
-        nombre = choice(lista)
+        nombre = random.choice(lista)
         if equipos[i+i] == "Hector" or equipos[i+i] == "Addi" or equipos[i+i] == "Jesus Aberto":
             if nombre != "Hector" or nombre != "Addi" or nombre != "Jesus Aberto":
                 equipos.append(nombre)
@@ -48,11 +47,14 @@ def generar_equipos() -> None:
                 equipos.append(nombre)
                 lista.remove(nombre)
                 i += 1
-
-        equipos.append(choice(lista))
+        nombre = random.choice(lista)
+        equipos.append(nombre)
         lista.remove(equipos[-1])
-
-
+    k = 0
+    while k < 6:
+        print(f"Equipo {k + 1}")
+        print(f"{equipos[i+i]},{equipos[i+1]}" )
+        print()
 
 
 def main() -> None:
@@ -61,8 +63,10 @@ def main() -> None:
     """
 
     print("********  Generar nuevos equipos para el semestre. ********")
+    print()
+    generar_equipos()
 
 
 """ %%%%%%%     CÓDIGO A NIVEL DE MÓDULO    %%%%%%%%%%%%%%%%%%%%% """
 if __name__ == '__main__':
-        main()
+    main()
