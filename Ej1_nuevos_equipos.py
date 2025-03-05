@@ -1,6 +1,6 @@
 """
 Nombre: Galilea Peralta Contreras.
-Fecha: 04 de mARZO del 2025.
+Fecha: 04 de marzo del 2025.
 
 Descripción:
 El curso tiene los siguientes equipos:
@@ -10,7 +10,7 @@ El curso tiene los siguientes equipos:
     Los Ctrl+Z: Galilea, Jennifer, Juan.
 Este programa debe generar 6 nuevos equipos de 2 personas cada uno, pero con la restricción de que no puede haber dos personas que ya estuvieron en el mismo equipo de arriba ☝️.
 """
-from random import random
+import random
 
 
 def generar_equipos() -> None:
