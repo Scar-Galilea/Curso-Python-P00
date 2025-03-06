@@ -12,12 +12,16 @@ Este programa debe generar 6 nuevos equipos de 2 personas cada uno, pero con la 
 """
 import random
 
+def main() -> None:
+    """
+    Función principal.
+    """
 
-def generar_equipos() -> None:
-    """
-    Función que genera equipos y muestra.
-    """
-    equipo_anteriores = [["Hector","Addi","Jesus Aberto"],["Patricia","Tania","Rebeca"],["Jamileth","Bryan","Rosalinda"],["Galilea","Jennifer","Juan"]]
+    print("********  Generar nuevos equipos para el semestre. ********")
+    print()
+
+    equipo_anteriores = [["Hector", "Addi", "Jesus Aberto"], ["Patricia", "Tania", "Rebeca"],
+                         ["Jamileth", "Bryan", "Rosalinda"], ["Galilea", "Jennifer", "Juan"]]
     participantes = []
     equipos_nuevos = []
 
@@ -49,25 +53,10 @@ def generar_equipos() -> None:
 
     k = 0
 
+    print("          Equipos formados:            ")
     while k < 6:
-        print(equipos_nuevos[k+k*1],equipos_nuevos[k+1+1*k])
+        print(f"* {equipos_nuevos[k + k * 1]},{equipos_nuevos[k + 1 + 1 * k]}")
         k += 1
-
-
-
-
-
-
-
-def main() -> None:
-    """
-    Función principal.
-    """
-
-    print("********  Generar nuevos equipos para el semestre. ********")
-    print()
-    generar_equipos()
-
 
 """ %%%%%%%     CÓDIGO A NIVEL DE MÓDULO    %%%%%%%%%%%%%%%%%%%%% """
 if __name__ == '__main__':

@@ -7,8 +7,7 @@ Descripción:
 """
 
 
-def caminar() -> None:
-    print("Estoy caminando.")
+
 
 
 class Persona:
@@ -22,6 +21,8 @@ class Persona:
         # S e construyo a una persona
 
     # Mis metodos:
+    def caminar(self) -> None:
+        print("Estoy caminando.")
 
     def comer(self) -> None:
         print("Estoy comiendo.")
@@ -41,7 +42,7 @@ def main() -> None:
     galilea = Persona("Galilea",19,1.60,56)
 
     print(galilea.nombre)
-    caminar()
+    galilea.caminar()
 
 """ %%%%%%%     CÓDIGO A NIVEL DE MÓDULO    %%%%%%%%%%%%%%%%%%%%% """
 if __name__ == '__main__':
