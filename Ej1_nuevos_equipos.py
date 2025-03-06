@@ -16,45 +16,47 @@ import random
 def generar_equipos() -> None:
     """
     Función que genera equipos y muestra.
-
     """
-    equipos = []
-    lista = ["Hector","Addi","Jesus Aberto","Patricia","Tania","Rebeca","Jamileth","Bryan","Rosalinda","Galilea","Jennifer","Juan"]
-    nombre = random.choice(lista)
-    equipos.append(nombre)
-    lista.remove(nombre)
+    equipo_anteriores = [["Hector","Addi","Jesus Aberto"],["Patricia","Tania","Rebeca"],["Jamileth","Bryan","Rosalinda"],["Galilea","Jennifer","Juan"]]
+    participantes = []
+    equipos_nuevos = []
 
-    i = 0
-    while i < 6:
-        nombre = random.choice(lista)
-        if equipos[i+i] == "Hector" or equipos[i+i] == "Addi" or equipos[i+i] == "Jesus Aberto":
-            if nombre != "Hector" or nombre != "Addi" or nombre != "Jesus Aberto":
-                equipos.append(nombre)
-                lista.remove(nombre)
-                i += 1
-        elif equipos[i+i] == "Patricia" or equipos[i+i] == "Tania" or equipos[i+i] == "Rebeca":
-            if nombre != "Patricia" or nombre != "Tania" or nombre != "Rebeca":
-                equipos.append(nombre)
-                lista.remove(nombre)
-                i += 1
-        elif equipos[i+i] == "Jamileth" or equipos[i+i] == "Bryan" or equipos[i+i] == "Rosalinda":
-            if nombre != "Jamileth" or nombre != "Bryan" or nombre != "Rosalinda":
-                equipos.append(nombre)
-                lista.remove(nombre)
-                i += 1
-        else:
-            if nombre != "Galilea"or nombre != "Jennifer" or nombre != "Juan":
-                equipos.append(nombre)
-                lista.remove(nombre)
-                i += 1
-        nombre = random.choice(lista)
-        equipos.append(nombre)
-        lista.remove(equipos[-1])
+    for i in equipo_anteriores:
+        for k in i:
+            participantes.append(k)
+
+    estudiante = random.choice(participantes)
+    equipos_nuevos.append(estudiante)
+    participantes.remove(estudiante)
+
+    while len(participantes) > 2:
+        estudiante = random.choice(participantes)
+        for i in equipo_anteriores:
+            contador = 0
+            for k in i:
+                if estudiante != k:
+                    contador += 1
+            if contador == 3:
+                equipos_nuevos.append(estudiante)
+                participantes.remove(estudiante)
+                break
+
+        estudiante = random.choice(participantes)
+        equipos_nuevos.append(estudiante)
+        participantes.remove(estudiante)
+
+    equipos_nuevos.append(participantes[0])
+
     k = 0
+
     while k < 6:
-        print(f"Equipo {k + 1}")
-        print(f"{equipos[i+i]},{equipos[i+1]}" )
-        print()
+        print(equipos_nuevos[k+k*1],equipos_nuevos[k+1+1*k])
+        k += 1
+
+
+
+
+
 
 
 def main() -> None:
