@@ -6,10 +6,6 @@ Descripción:
 
 """
 
-
-
-
-
 class Persona:
     # El self se refiere a uno mismo, en este caso al objeto que estamos costruyendo.
     def __init__(self, nombre: str, edad: int, altura: float, peso: float):
@@ -17,21 +13,21 @@ class Persona:
         self.nombre = nombre
         self.edad = edad
         self.altura = altura
-        self.peso = nombre
+        self.peso = peso
         # S e construyo a una persona
 
     # Mis metodos:
     def caminar(self) -> None:
-        print("Estoy caminando.")
+        print(f"{self.nombre} está caminando para bajar sus {self.peso} kgs.")
 
     def comer(self) -> None:
-        print("Estoy comiendo.")
+        print(f"{self.nombre} está comiendo un pastel por su cumpleaños número {self.edad} años.")
 
     def jugar(self) -> None:
-        print("Estoy jugando.")
+        print(f"{self.nombre} está jugando Mobile legends bang bang.")
 
     def dormir(self) -> None:
-        print("Estoy durmiendo.")
+        print(f"{self.nombre} está durmiendo temprano para madrugar.")
 
 def main() -> None:
     """
@@ -43,6 +39,23 @@ def main() -> None:
 
     print(galilea.nombre)
     galilea.caminar()
+
+    print()
+    rosalinda = Persona("Rosalinda",21,1.50,56)
+    rosalinda.caminar()
+    rosalinda.comer()
+    rosalinda.jugar()
+    rosalinda.dormir()
+
+    print()
+    galilea.peso = 55
+    galilea.altura = 1.61
+
+    print(galilea.peso,galilea.altura)
+    galilea.caminar()
+
+    print()
+    print(galilea.nombre)
 
 """ %%%%%%%     CÓDIGO A NIVEL DE MÓDULO    %%%%%%%%%%%%%%%%%%%%% """
 if __name__ == '__main__':
