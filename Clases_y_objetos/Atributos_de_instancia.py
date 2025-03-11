@@ -28,8 +28,8 @@ class Profesor:
         self.temas_dominados.append(tema)
         print(f"{self.nombre} dominó {tema}")
 
-    def ensenar_tema(self, no_tema: int) -> str | None:
-        if no_tema > len(self.temas_dominados):
+    def ensenar_tema(self, no_tema: int) -> str :
+        if no_tema < len(self.temas_dominados):
             return self.temas_dominados[no_tema]
         else:
             return "Fuera de rango"
@@ -45,18 +45,20 @@ def main() -> None:
     Función principal.
     """
 
+
     scarlett = Estudiante("Scarlett")
     galilea = Estudiante("Galilea")
-    print()
-    scarlett.aprender_temas("Evolución de los stiios web")
-    galilea.aprender_temas("Internet de la cosas")
-    print()
-    print(scarlett)
-    print(galilea)
-    print()
+
+
     alberto = Profesor("Alberto",["Diseño web","Español"])
-    alberto.ensenar_tema(2)
-    print(alberto)
+    a = alberto.ensenar_tema(1)
+
+    scarlett.aprender_temas(alberto.ensenar_tema(1))
+    galilea.aprender_temas(alberto.ensenar_tema(1))
+
+
+
+
 
 
 """ %%%%%%%     CÓDIGO A NIVEL DE MÓDULO    %%%%%%%%%%%%%%%%%%%%% """
