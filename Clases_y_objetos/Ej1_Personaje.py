@@ -52,6 +52,8 @@ def main() -> None:
         b = input("Ingresa las órdenes de movimiento: ").lower()
         jugador.moverse(b)
         jugador.posicion_actual()
+    print()
+    print("Fin del programa.")
 
 
 """ %%%%%%%     CÓDIGO A NIVEL DE MÓDULO    %%%%%%%%%%%%%%%%%%%%% """
