@@ -10,8 +10,8 @@ class Personaje:
     contador_id = 1
     def __init__(self):
 
-        self.x = int
-        self.y = int
+        self.x = 0
+        self.y = 0
         self.contador_id  = Personaje.contador_id
         Personaje.contador_id += 1
 
@@ -20,30 +20,38 @@ class Personaje:
         Se utiliza para aumentar el sueldo de acuerdo con un porcentaje.
         :param ordenes: Porcentaje a incrementar el sueldo.
         """
-        acumulador_x = 0
-        acumulador_y = 0
+        ordenes = ordenes.lower()
+        for i in ordenes:
+            if i == 'a' and self.y != 10:
+                self.y += 1
+            elif i == 'r' and self.y != 0:
+                self.y -= 1
+            if i == 'd' and self.x != 10:
+                self.x += 1
+            elif i == 'i' and self.x != 0:
+                self.x -= 1
 
-        for i in ordenes.lower():
-            if i == 'a':
-                acumulador_y += 1
-            elif i == 'r' and acumulador_y != 0:
-                acumulador_y -= 1
-            if i == 'd':
-                acumulador_x += 1
-            else:
-                if i == 'i' and acumulador_x != 0:
-                    acumulador_x -= 1
-
-
+    def posicion_actual(self) -> None:
+        print(f"Posición actual: (x,y) = ({self.x}, {self.y}).")
 
     def __str__(self) -> str:
-        return f"Personaje  ( Id = {self.contador_id}, x: {self.x}, y: {self.y}.)"
+        return f"Personaje  ( id = {self.contador_id}, x: {self.x}, y: {self.y}.)"
 
 
 def main() -> None:
     """
     Función principal.
     """
+    b = None
+    print("-- Se crea el objeto e la clase Personaje y se imprime.")
+    jugador = Personaje()
+    print(jugador)
+    print()
+    print(  "Se solicitan interactivamente una secuencias de movimiento.")
+    while b != "s":
+        b = input("Ingresa las órdenes de movimiento: ").lower()
+        jugador.moverse(b)
+        jugador.posicion_actual()
 
 
 """ %%%%%%%     CÓDIGO A NIVEL DE MÓDULO    %%%%%%%%%%%%%%%%%%%%% """
