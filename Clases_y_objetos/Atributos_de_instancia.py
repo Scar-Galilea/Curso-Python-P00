@@ -57,10 +57,6 @@ def main() -> None:
     galilea.aprender_temas(alberto.ensenar_tema(1))
 
 
-
-
-
-
 """ %%%%%%%     CÓDIGO A NIVEL DE MÓDULO    %%%%%%%%%%%%%%%%%%%%% """
 if __name__ == '__main__':
     main()
