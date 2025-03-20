@@ -57,7 +57,7 @@ def main() -> None:
     """
 
     # Se crean varios objetos de la clase Empleado y se imprimen en consola.
-    alberto = Empleado("Alberto Martínez", 1110.1)
+    alberto = Empleado("Alberto", 1110.1)
     gerardo = Empleado("Gerardo Guerrero", 12_123.23)
 
     emp = Empresa("Unsij",alberto,gerardo)
@@ -65,6 +65,11 @@ def main() -> None:
     emp.agregar_empleados(Empleado("Scarlett",3000))
     print(emp)
 
+    print()
+    print(alberto)
+    alberto.nombre = "Alberto Martínez"
+    print(alberto)
+    print(alberto.nombre)
 """ %%%%%%%     CÓDIGO A NIVEL DE MÓDULO    %%%%%%%%%%%%%%%%%%%%% """
 if __name__ == '__main__':
     main()
