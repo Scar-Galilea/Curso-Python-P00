@@ -22,10 +22,10 @@ class CuentaBancaria:
     def saldo(self)-> float:
         return self.saldo
     @ saldo.setter
-    def saldo(self) -> float:
+    def saldo2(self) -> float:
         return self.saldo
     def __str__(self) -> str:
-        return f"Cuenta Bancaria  ( id = {self.contador_id}, titular: {self.titular}, saldo inicial: {self.saldo_inicial}.)"
+        return f"Cuenta Bancaria  ( id = {self.contador_id}, titular: {self.titular}, saldo inicial: {self._saldo_inicial}.)"
 
 
 def main() -> None:
@@ -33,7 +33,7 @@ def main() -> None:
     Función principal.
     """
     cuenta_guadalupe = (CuentaBancaria("Guadalupe",0))
-    cuenta_guadalupe.saldo = 5
+    print(cuenta_guadalupe)
 
 
 

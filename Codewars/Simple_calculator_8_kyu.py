@@ -16,29 +16,22 @@ calculator(1, 2, '+') => 3
 calculator(1, 2, '$') # result will be "unknown value"
 
 """
-def calculator(x:str , y: int , op: str) -> float | str:
+def calculator(x:str , y: str , op: str) -> float | str | int:
 
-    total = None
-    if op == "+":
-        total = x+y
-    elif op == "-":
-        total = x-y
-    elif op == "*":
-        total = x*y
-    elif op == "/":
-        total = x/y
-    else:
-        total = "unknown value"
-    return total
+    total = "unknown value"
+    if x.isnumeric() and y.isnumeric():
+        x = int(x)
+        y = int(y)
 
-def cadena_a_entero(cadena: str) -> int | None:
-    no_guiones = cadena.count("-")
-    revisar_cadena = cadena.lstrip("-")
-    if revisar_cadena.isnumeric() and no_guiones in(0,1) :
-        return  int(cadena)
-    else:
-        return None
-
+        if op == "+":
+            total = x+y
+        elif op == "-":
+            total = x-y
+        elif op == "*":
+            total = x*y
+        elif op == "/":
+            total = x/y
+    return int(total)
 
 def main() -> None:
     """
@@ -48,10 +41,8 @@ def main() -> None:
     x = input(f"x: ")
     y = input(f"y: ")
     op = input(f"Ingrese la operación a realizar: ")
-    x = cadena_a_entero(x)
-    y = cadena_a_entero(y)
 
-    calculator(x,y,op)
+    print(calculator(x,y,op))
 
 """ %%%%%%%     CÓDIGO A NIVEL DE MÓDULO    %%%%%%%%%%%%%%%%%%%%% """
 if __name__ == '__main__':
