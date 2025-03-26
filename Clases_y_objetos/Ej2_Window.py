@@ -18,7 +18,7 @@ class Window:
         self._scoreboard.draw()
 
     def update_score(self,points: int) -> None:
-        self._scoreboard.points += points
+        self._scoreboard.points = points
         self._scoreboard.draw()
 
     @property
