@@ -8,51 +8,48 @@ Descripción:
 
 class Scoreboard:
     def __init__(self,points : int = 0,text_color: tuple[int,int,int] = (0,0,0),font: str = 'Kimono',size: float = 48):
-        self.points = points
-        self.text_color = text_color
-        self.font = font
-        self.size = size
-        self.x = 0
-        self.y = 0
+        self._points = points
+        self._text_color = text_color
+        self._font = font
+        self._size = size
 
     def draw(self) -> None:
-        print(f"Score: {self.points}")
+        print(f"Score: {self._points}")
 
     @property
     def points(self) -> int:
-        return self.points
+        return self._points
 
     @property
-    def text_color(self) -> tuple[int]:
-        return self.text_color
+    def text_color(self) -> tuple[int,int,int]:
+        return self._text_color
 
     @property
-    def font(self) -> float:
-        return self.font
+    def font(self) -> str:
+        return self._font
 
     @property
-    def size(self) -> str:
-        return self.size
+    def size(self) -> float:
+        return self._size
 
     @points.setter
-    def points(self, value):
-        self._points = value
+    def points(self, points : int) -> None:
+        self._points = points
 
     @text_color.setter
-    def text_color(self, value):
-        self._text_color = value
+    def text_color(self, text_color: tuple[int,int,int]) -> None:
+        self._text_color = text_color
 
     @font.setter
-    def font(self, value):
-        self._font = value
+    def font(self, font: str) -> None:
+        self._font = font
 
     @size.setter
-    def size(self, value):
-        self._size = value
+    def size(self, size: float) -> None:
+        self._size = size
 
     def __str__(self) -> str:
-        pass
-        #return f"Empleado  ( Id = {self.no_id}. Nombre: {self.nombre}. Sueldo: {self.sueldo})"
+        return f"Scoreboard ( points = {self._points},  text_color = ({self._text_color}), font = {self._font}, size = {self._size})"
 
 def main() -> None:
     """
