@@ -16,22 +16,27 @@ calculator(1, 2, '+') => 3
 calculator(1, 2, '$') # result will be "unknown value"
 
 """
-def calculator(x:str , y: str , op: str) -> float | str | int:
+def calculator(x:str , y: str , op: str) -> None | float | str:
 
-    total = "unknown value"
-    if x.isnumeric() and y.isnumeric():
+    if not (str(x).isnumeric() and str(y).isnumeric()):
+        return "unknown value"
+    else:
         x = int(x)
         y = int(y)
-
         if op == "+":
-            total = x+y
+            return float(x+y)
         elif op == "-":
-            total = x-y
+            return float(x-y)
         elif op == "*":
-            total = x*y
+            return float(x*y)
         elif op == "/":
-            total = x/y
-    return int(total)
+            return float(x/y)
+        else:
+            return "unknown value"
+
+
+
+
 
 def main() -> None:
     """
