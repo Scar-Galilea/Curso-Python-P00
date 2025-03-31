@@ -14,9 +14,9 @@ Examples
 
 """
 def replace_exclamation(st:str) -> str:
-    st2 =  None
+    st2 = ''
     for i in st:
-        if i.lower() == ('a','e','i','o','u'):
+        if i.lower() == 'a' or i.lower() == 'e' or  i.lower() == 'i' or i.lower() == 'o' or i.lower() == "u":
             print()
             st2 = st2 + '!'
         else:
@@ -25,16 +25,12 @@ def replace_exclamation(st:str) -> str:
 
 
 
-
 def main() -> None:
     """
     Función principal.
     """
-
-    st = input("Ingrese una cadena: ")
-    replace_exclamation(st)
-
-
+    st = input("Ingrese una frase: ")
+    print(replace_exclamation(st))
 
 
 
