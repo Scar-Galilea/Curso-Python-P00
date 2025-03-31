@@ -4,28 +4,26 @@ Fecha: 31 de marzo del 2025.
 
 Descripción:
 
+ Replace all vowel to exclamation mark in the sentence. aeiouAEIOU is vowel.
+Examples
+
+"Hi!" --> "H!!"
+"!Hi! Hi!" --> "!H!! H!!"
+"aeiou" --> "!!!!!"
+"ABCDE" --> "!BCD!"
+
 """
+def replace_exclamation(st:str) -> str:
+    st2 =  None
+    for i in st:
+        if i.lower() == ('a','e','i','o','u'):
+            print()
+            st2 = st2 + '!'
+        else:
+            st2 = st2 + i
+    return st2
 
 
-def six_toast(num: int) -> int:
-
-    num = num-6
-    # abs es una función de valor absoluto
-    num = abs(num)
-    return num
-
-
-def cadena_entero(cadena: str) -> int | None:
-    """
-    Convertir una cadena a flotante.
-    :return: Un número cadena o none.
-    """
-    no_guiones = cadena.count("-")
-    revisar_cadena = cadena.lstrip("-").replace(".", "")
-    if revisar_cadena.isnumeric() and no_guiones in (0, 1):
-        return int(cadena)
-    else:
-        return None
 
 
 def main() -> None:
@@ -33,13 +31,10 @@ def main() -> None:
     Función principal.
     """
 
-    num = input("Números de tostadas que tiene: ")
+    st = input("Ingrese una cadena: ")
+    replace_exclamation(st)
 
-    print(six_toast(num))
 
-    while  num  == None:
-        num = input(f"Vuelve intentarlo: ")
-        num = cadena_entero(num)
 
 
 
