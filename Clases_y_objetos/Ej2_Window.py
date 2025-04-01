@@ -21,22 +21,41 @@ La ventana debe interactuar con el scoreboard a través de una relación de agre
 El sistema debe ser fácil de extender, por ejemplo, para agregar más elementos gráficos o funcionalidades adicionales.
 
 """
+# Se importa la clase Scoreboard
 from Ej2_Scoreboard import Scoreboard
 
 class Window:
+    """
+    Clase que representa una ventana en la interfaz gráfica.
+    """
     def __init__(self, title: str, width: int, height: int, scoreboard: Scoreboard = Scoreboard()):
+        """
+         Atributos de la clase Window.
+        :param title: Título de la ventana.
+        :param width: Ancho de la ventana.
+        :param height: Alto de la ventana.
+        :param scoreboard: Objeto de la clase Scoreboard.
+         """
         self._title = title
         self._width = width
         self._height = height
         self._scoreboard = scoreboard
 
     def draw_scoreboard(self) -> None:
+        """
+        Dibuja el scoreboard en la ventana.
+        """
         self._scoreboard.draw()
 
     def update_score(self,points: int) -> None:
+        """
+        Actualiza la puntuación del scoreboard y lo redibuja.
+        :param points: Nueva puntuación a asignar.
+        """
         self._scoreboard.points = points
         self._scoreboard.draw()
 
+    # Métodos de acceso para obtener atributos encapsulados.
     @property
     def title(self) -> str:
         return self._title
@@ -53,6 +72,7 @@ class Window:
     def scoreboard(self) -> Scoreboard():
         return self._scoreboard
 
+    #Métodos modificadores (setters) para cambiar valores de los atributos encapsulados.
     @title.setter
     def title(self, title: str) -> None:
         self._title = title
@@ -70,6 +90,9 @@ class Window:
         self._scoreboard = scoreboard
 
     def __str__(self) -> str:
+        """
+        Retorna una representación en cadena de la ventana y su scoreboard.
+        """
         return f"Window ( title = {self._title}, width = {self._width}, height = {self._height}, scoreboard = {self.scoreboard})"
 
 

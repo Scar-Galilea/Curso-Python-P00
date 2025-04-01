@@ -28,8 +28,13 @@ class Scoreboard:
         self._size = size
 
     def draw(self) -> None:
+        """
+        Muestra la puntuación actual en pantalla.
+        """
         print(f"Score: {self._points}")
 
+
+    # Métodos de acceso para obtener atributos encapsulados.
     @property
     def points(self) -> int:
         return self._points
@@ -46,6 +51,7 @@ class Scoreboard:
     def size(self) -> float:
         return self._size
 
+    # Métodos modificadores (setter) para cambiar valores de los atributos encapsulados.
     @points.setter
     def points(self, points : int) -> None:
         self._points = points
@@ -63,6 +69,9 @@ class Scoreboard:
         self._size = size
 
     def __str__(self) -> str:
+        """
+        Retorna una representación en cadena del objeto Scoreboard.
+        """
         return f"Scoreboard ( points = {self._points},  text_color = ({self._text_color}), font = {self._font}, size = {self._size})"
 
 def main() -> None:
