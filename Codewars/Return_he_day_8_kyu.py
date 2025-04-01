@@ -55,7 +55,7 @@ def main() -> None:
     num = input("Números de tostadas que tiene: ")
     num = cadena_a_entero(num)
     while num == None:
-        num = input(f"Vuelve intentarlo: ")
+        num = input(f"Ingrese un número: ")
         num = cadena_a_entero(num)
 
     print(whatday(num))

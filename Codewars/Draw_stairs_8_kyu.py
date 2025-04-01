@@ -28,13 +28,14 @@ I
 """
 
 def draw_stairs(n:int):
-    espacio = "/n"
-    caracter = 'I'
-    for i in range(n):
-        cadena = caracter + espacio
-        espacio = espacio + espacio
-        caracter = caracter + caracter
-
+    c = 'I'
+    cadena = ""
+    espacio = " "
+    cont = 1
+    for i in range(0,n - 1):
+        cadena = cadena + c + "\n" + espacio * cont
+        cont += 1
+    cadena = cadena + c
     return cadena
 
 
@@ -58,7 +59,7 @@ def main() -> None:
 
     n = input("Ingrese el número de saltos de linea: ")
     n = cadena_a_entero(n)
-    while  n  == None:
+    while n is None:
         n = input(f"Vuelve intentarlo: ")
         n = cadena_a_entero(n)
 
