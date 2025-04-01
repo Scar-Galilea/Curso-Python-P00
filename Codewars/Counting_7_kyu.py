@@ -9,8 +9,11 @@ Descripción:
 def count_arara(n:int) -> str | None:
     impar = "anane"
     par = ""
-    if n%2== 0 and n<= 8: return par*n
-    elif n%2!= 0 and n<= 8 :return impar*(n-1)
+    n = int(n/2)
+    if n%2 == 0 and n<= 8:
+        return "adak " * (n) + par
+    elif n%2 != 0 and n<= 8 :
+        return "adak " *(n) + "anane"
 
 def cadena_a_entero(cadena: str) -> int | None:
     """
@@ -30,7 +33,7 @@ def main() -> None:
     Función principal.
     """
 
-    n = input("Ingrese el número de parejas de la tribu Arara ")
+    n = input("Ingrese el número de parejas de la tribu Arara: ")
     n = cadena_a_entero(n)
     while n is None:
         n = input(f"Vuelve intentarlo: ")
