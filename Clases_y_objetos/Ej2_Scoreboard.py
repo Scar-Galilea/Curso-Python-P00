@@ -3,6 +3,13 @@ Nombre: Galilea Peralta Contreras.
 Fecha: 11 de marzo del 2025.
 
 Descripción:
+Se necesita desarrollar un sistema que permita gestionar y visualizar un scoreboard (puntuación) dentro de una ventana gráfica. El sistema debe cumplir con los siguientes requisitos:
+
+1. Scoreboard:
+
+Debe almacenar y gestionar la puntuación actual,
+Debe permitir actualizar la posición,
+Debe ser capaz de dibujarse en pantalla con un formato específico.
 
 """
 
