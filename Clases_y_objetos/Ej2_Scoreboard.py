@@ -15,6 +15,13 @@ Debe ser capaz de dibujarse en pantalla con un formato específico.
 
 class Scoreboard:
     def __init__(self,points : int = 0,text_color: tuple[int,int,int] = (0,0,0),font: str = 'Kimono',size: float = 48):
+        """
+        Constructor de la clase Scoreboard.
+        :param points: Puntuación inicial.
+        :param text_color: Color del texto en formato RGB.
+        :param font: Tipo de fuente utilizada.
+        :param size: Tamaño de la fuente.
+        """
         self._points = points
         self._text_color = text_color
         self._font = font
