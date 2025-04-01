@@ -3,6 +3,22 @@ Nombre: Galilea Peralta Contreras.
 Fecha: 24 de marzo del 2025.
 
 Descripción:
+Se necesita desarrollar un sistema que permita gestionar y visualizar un scoreboard (puntuación) dentro de una ventana gráfica. El sistema debe cumplir con los siguientes requisitos:
+
+
+2. Ventana:
+
+Debe contener un scoreboard como parte de su interfaz.
+Debe permitir actualizar el puntaje del scoreboard.
+Debe ser capaz de redibujar el scoreboard cuando se actualice la puntuación.
+3. Encapsulamiento:
+
+La lógica del scoreboard debe estar encapsulada en una clase independiente.
+La ventana debe interactuar con el scoreboard a través de una relación de agregación.
+4. Flexibilidad:
+
+
+El sistema debe ser fácil de extender, por ejemplo, para agregar más elementos gráficos o funcionalidades adicionales.
 
 """
 from Ej2_Scoreboard import Scoreboard
