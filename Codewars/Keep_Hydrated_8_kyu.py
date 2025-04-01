@@ -17,7 +17,6 @@ time = 11.8--> litres = 5
 def litres(time:float) -> int:
     """
     Calcular los litros.
-    :param lts: litros.
     :return: Los litros que ocupará para el ejercicio.
     """
     lts = time * 0.5
@@ -45,7 +44,7 @@ def main() -> None:
     time = input(f"Tiempo de ejercicio: ")
     time = cadena_a_flotante(time)
 
-    while time == None:
+    while time is None:
         time = input(f"Vuelve intentarlo: ")
         time = cadena_a_flotante(time)
 
