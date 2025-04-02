@@ -35,7 +35,6 @@ class Equipo:
             print(jugador)
 
 
-
     # Métodos de acceso para obtener atributos encapsulados.
     @property
     def nombre(self) -> str:
