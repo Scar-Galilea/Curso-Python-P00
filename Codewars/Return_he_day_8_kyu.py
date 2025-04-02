@@ -16,6 +16,11 @@ Descripción:
 
 
 def whatday(num:int) -> str:
+    """
+    Devuelve el nombre del día de la semana correspondiente a un número.
+    :param num: Número entero entre 1 y 7.
+    :return: Nombre del día de la semana o mensaje de error.
+    """
 
     if num == 1:
         return "Sunday"
@@ -37,10 +42,10 @@ def whatday(num:int) -> str:
 
 def cadena_a_entero(cadena: str) -> int | None:
     """
-       Muestra el menu del programa
-       :param cadena: Lo que ingresa el usuario
-       :return: Un número entero o None
-       """
+    Muestra el menu del programa.
+    :param cadena: Lo que ingresa el usuario.
+    :return: Un número entero o None.
+    """
     no_guiones = cadena.count("-")
     revisar_cadena = cadena.lstrip("-")
     if revisar_cadena.isnumeric() and no_guiones in(0,1) :

@@ -41,7 +41,7 @@ def main() -> None:
 
     num = input("Números de tostadas que tiene: ")
     num = cadena_a_entero(num)
-    while  num  == None:
+    while  num  is None:
         num = input(f"Vuelve intentarlo: ")
         num = cadena_a_entero(num)
 

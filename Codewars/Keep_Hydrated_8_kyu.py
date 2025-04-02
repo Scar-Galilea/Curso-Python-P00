@@ -16,12 +16,12 @@ time = 11.8--> litres = 5
 """
 def litres(time:float) -> int:
     """
-    Calcular los litros.
-    :return: Los litros que ocupará para el ejercicio.
+    Calcula la cantidad de litros de agua que Nathan necesita beber.
+    :param time: Tiempo en horas que Nathan ha estado haciendo ejercicio.
+    :return: Cantidad de litros de agua (redondeado hacia abajo).
     """
-    lts = time * 0.5
-
-    return int(lts)
+    lts = time * 0.5  # Calcula la cantidad de litros de agua según las horas de ejercicio.
+    return int(lts)  # Convierte el resultado a un entero para redondear.
 
 def cadena_a_flotante(cadena: str) -> float | None:
     """
@@ -41,14 +41,14 @@ def main() -> None:
     """
     Función principal.
     """
-    time = input(f"Tiempo de ejercicio: ")
-    time = cadena_a_flotante(time)
+    time = input("Tiempo de ejercicio (en horas): ")  # Solicita al usuario el tiempo en horas.
+    time = cadena_a_flotante(time)  # Intenta convertir la entrada a flotante.
 
     while time is None:
-        time = input(f"Vuelve intentarlo: ")
+        time = input("Entrada no válida. Intenta de nuevo: ")
         time = cadena_a_flotante(time)
 
-
+    # Muestra el resultado de la cantidad de litros de agua que debe beber.
     print(f"time = {time} ----> litres = {litres(time)}")
 
 

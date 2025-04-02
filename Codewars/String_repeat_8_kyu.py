@@ -12,14 +12,21 @@ Examples (input -> output)
 """
 
 def repeat_str(repeat: int, string: str) -> str:
+    """
+    Repite la cadena 'string' 'repeat' veces.
+    :param repeat: Número de veces que se repetirá la cadena.
+    :param string: La cadena a repetir.
+    :return: La cadena repetida el número de veces indicado.
+    """
+
     return string * repeat
 
 def cadena_a_entero(cadena: str) -> int | None:
     """
-       Muestra el menu del programa
-       :param cadena: Lo que ingresa el usuario
-       :return: Un número entero o None
-       """
+    Muestra el menu del programa.
+    :param cadena: Lo que ingresa el usuario.
+    :return: Un número entero o None.
+    """
     no_guiones = cadena.count("-")
     revisar_cadena = cadena.lstrip("-")
     if revisar_cadena.isnumeric() and no_guiones in(0,1) :

@@ -25,16 +25,21 @@ You are permitted to use any methods to validate the password.
 """
 
 def password(st:str)-> bool:
+    """
+    Verifica si una contraseña cumple con los criterios establecidos.
+    :param st: La contraseña ingresada por el usuario.
+    :return: True si la contraseña es válida, False si no lo es.
+    """
     mayus = 0
     min = 0
     num = 0
     for i in st:
         if i.isupper():
-            mayus += 1
+            mayus += 1  # Cuenta mayúsculas.
         elif i.islower():
-            min += 1
+            min += 1  # Cuenta minúsculas.
         elif i.isnumeric():
-            num += 1
+            num += 1  # Cuenta números.
     if mayus >= 1 and min >= 1 and num >= 1 and len(st) >= 8:
         return bool(True)
     else:
@@ -42,10 +47,10 @@ def password(st:str)-> bool:
 
 def cadena_a_entero(cadena: str) -> int | None:
     """
-       Muestra el menu del programa
-       :param cadena: Lo que ingresa el usuario
-       :return: Un número entero o None
-       """
+    Muestra el menu del programa.
+    :param cadena: Lo que ingresa el usuario.
+    :return: Un número entero o None.
+    """
     no_guiones = cadena.count("-")
     revisar_cadena = cadena.lstrip("-")
     if revisar_cadena.isnumeric() and no_guiones in(0,1) :
@@ -59,7 +64,7 @@ def main() -> None:
     """
 
     n = input("Ingrese su contraseña: ")
-    print(password(n))
+    print(password(n)) # Solicita la contraseña al usuario.
 
 
 

@@ -24,13 +24,19 @@ Examples(Inputs-->Output):
 """
 
 def final_grade(exam: int, projects:int) -> int:
-    if exam > 90 or projects > 10:
+    """
+    Calcula la calificación final en función del examen y el número de proyectos completados.
+    :param exam: Calificación del examen (entre 0 y 100).
+    :param projects: Número de proyectos completados (0 o más).
+    :return: Calificación final según las condiciones especificadas.
+    """
+    if exam > 90 or projects > 10:  # Si el examen es mayor a 90 o los proyectos son más de 10
         return 100
-    elif exam > 75 and projects >= 5:
+    elif exam > 75 and projects >= 5:  # Si el examen es mayor a 75 y los proyectos son al menos 5
         return 90
-    elif exam > 50 and projects >= 2:
+    elif exam > 50 and projects >= 2:  # Si el examen es mayor a 50 y los proyectos son al menos 2
         return 75
-    else:
+    else:  # Si no se cumple ninguna de las condiciones anteriores
         return 0
 
 def cadena_a_entero(cadena: str) -> int | None:
@@ -55,6 +61,8 @@ def main() -> None:
     projects = input("Ingrese el número de proyectos terminados (a partir de 0 y más: ")
     exam = cadena_a_entero(exam)
     projects = cadena_a_entero(projects)
+
+    # Verifica que las entradas sean válidas y vuelve a pedirlas si no lo son.
     while exam is None:
         exam = input(f"Vuelve intentarlo, ingrese el grado de examen: ")
         exam = cadena_a_entero(exam)

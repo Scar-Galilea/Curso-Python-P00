@@ -17,6 +17,13 @@ calculator(1, 2, '$') # result will be "unknown value"
 
 """
 def calculator(x:str , y: str , op: str) -> None | float | str:
+    """
+    Realiza una operación matemática entre dos números.
+    :param x: Primer número.
+    :param y: Segundo número.
+    :param op: Operador matemático ('+', '-', '*', '/').
+    :return: Resultado de la operación como float o "unknown value" si hay un error.
+    """
 
     if not (str(x).isnumeric() and str(y).isnumeric()):
         return "unknown value"

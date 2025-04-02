@@ -14,14 +14,19 @@ The conversion rate you should use is 6.75 CNY for every 1 USD. All numbers shou
 """
 
 def usdcny(usd:float)-> str :
+    """
+    Convierte la cantidad de dólares estadounidenses (USD) a yuanes chinos (CNY) utilizando una tasa de cambio de 6.75.
+    :param usd: La cantidad en dólares estadounidenses a convertir.
+    :return: Una cadena que contiene la cantidad de yuanes chinos con dos decimales seguidos de 'Chinese Yuan'.
+    """
     return f"{(usd*6.75):.2f} Chinese Yuan"
 
 def cadena_a_entero(cadena: str) -> int | None:
     """
-       Muestra el menu del programa
-       :param cadena: Lo que ingresa el usuario
-       :return: Un número entero o None
-       """
+    Muestra el menu del programa
+    :param cadena: Lo que ingresa el usuario
+    :return: Un número entero o None
+    """
     no_guiones = cadena.count("-")
     revisar_cadena = cadena.lstrip("-")
     if revisar_cadena.isnumeric() and no_guiones in(0,1) :
@@ -33,7 +38,7 @@ def main() -> None:
     """
     Función principal.
     """
-
+    # Solicita al usuario la cantidad de dólares que desea convertir.
     usd = (input("Ingrese los dolares: "))
     usd = cadena_a_entero(usd)
 
