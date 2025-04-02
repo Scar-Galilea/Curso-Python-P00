@@ -34,6 +34,11 @@ class Equipo:
         for jugador in self._jugadores:
             print(jugador)
 
+    def total_goles(self) -> int:
+        pass
+
+
+
 
     # Métodos de acceso para obtener atributos encapsulados.
     @property
@@ -57,7 +62,6 @@ def main() -> None:
     """
     Función principal.
     """
-
 
 
 """ %%%%%%%     CÓDIGO A NIVEL DE MÓDULO    %%%%%%%%%%%%%%%%%%%%% """
