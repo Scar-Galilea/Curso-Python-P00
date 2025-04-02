@@ -6,14 +6,20 @@ Descripción:
 
 """
 
+"""
+Nombre: Galilea Peralta Contreras.
+Fecha: 31 de marzo del 2025.
+
+Descripción:
+
+"""
+
 def count_arara(n:int) -> str | None:
-    impar = "anane"
-    par = ""
-    n = int(n/2)
-    if n%2 == 0 and n<= 8:
-        return "adak " * (n) + par
-    elif n%2 != 0 and n<= 8 :
-        return "adak " *(n) + "anane"
+    n1 = int(n/2)
+    if n%2 == 0:
+        return "adak " * (n1-1) + "adak"
+    elif n%2 != 0:
+        return "adak " *(n1) + "anane"
 
 def cadena_a_entero(cadena: str) -> int | None:
     """
