@@ -16,7 +16,7 @@ from Equipo import Equipo
 from Jugador import Jugador
 
 class Torneo:
-    def __init__(self,nombre:str, *equipos:tuple[Equipo]):
+    def __init__(self,nombre:str, *equipos:Equipo):
         """
         Constructor de la clase Torneo.
         :param nombre: Nombre del torneo.
@@ -25,7 +25,7 @@ class Torneo:
         self._nombre = nombre
         self._equipos = list(equipos)
 
-    def agregar_equipos(self,*equipos:tuple[Equipo]) -> None:
+    def agregar_equipos(self,*equipos:Equipo) -> None:
         """
         Agrega uno o más equipos al torneo si no están ya registrados.
         :param equipos: Lista de equipos a agregar.
@@ -36,7 +36,7 @@ class Torneo:
             else:
                 print(f"El equipo {equipo} forma parte del equipo {self.nombre}.")
 
-    def eliminar_equipos(self, *equipos: tuple[Equipo]) -> None:
+    def eliminar_equipos(self, *equipos: Equipo) -> None:
         """
         Elimina uno o más equipos del torneo si están registrados.
         :param equipos: Lista de equipos a eliminar.
@@ -65,21 +65,25 @@ class Torneo:
 
         if numero_de_equipos % 2 == 0 and numero_de_equipos > 0:
             equipos = list(self._equipos)  # Copia para no modificar la original
+            if numero_de_equipos % 2 != 0:
+                equipos.append(Equipo("Auxiliar",))
 
             while grupo < numero_de_equipos - 1:  # Se genera el número correcto de jornadas
                 contador = 0
                 print(f"Jornada {grupo + 1}:")
 
                 # Mostrar los enfrentamientos del grupo actual.
+
                 while contador < se:
-                    print(equipos[contador]._nombre, end=" vs ")
-                    print(equipos[numero_de_equipos - 1 - contador]._nombre)
+                    print(equipos[contador].nombre, end=" vs ")
+                    print(equipos[numero_de_equipos - 1 - contador].nombre)
                     contador += 1
 
                 # Rotación de equipos, dejando fijo el primero
                 equipos.insert(1, equipos.pop())
                 grupo += 1
                 print()
+
 
         else:
             print("El número de equipos es insuficiente para formar una jornada.")
@@ -114,6 +118,7 @@ def main() -> None:
     jugador2 = Jugador("Luis", 3, 8)
     jugador3 = Jugador("Pedro", 7, 3)
     jugador4 = Jugador("Alberto", 8, 2)
+    jugador4 = Jugador("ana", 8, 2)
 
     equipo1 = Equipo("Leones",jugador1)
     equipo2 = Equipo("Tiburones",jugador2)

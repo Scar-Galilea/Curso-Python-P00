@@ -59,7 +59,7 @@ def menu() -> int:
     print("3) Ver listas de jugadores.")
     print("4) Ver listas de equipos.")
     print("5) Agregar jugadores a algún equipo.")
-    print("6) Agregar jugadores a algún equipo.")
+    print("6) eliminar jugadores a algún equipo.")
     print("7) Agregar equipos al torneo.")
     print("8) Eliminar equipos del torneo.")
     print("9) Anotar goles a un jugador.")
@@ -91,59 +91,148 @@ def cadena_a_entero(cadena: str) -> int | None:
     else:
         return None
 
+def cadena_a_entero_positivo(cadena: str) -> int | None:
+    if cadena.isnumeric():
+        return  int(cadena)
+    else:
+        return None
+
 def main() -> None:
     opcion = None
+    lista_jugadores = []
+    lista_equipos = []
+    x = Equipo("")
+    y = Torneo("")
+    torneo_principal = Torneo("Champios League")
 
     while opcion != 0:
         opcion = menu()
         if opcion == 0:
             print("Fin del programa.")
         elif opcion == 1:
-            lista_jugadores = Equipo("Lista de jugadores")
-            nombre_jugador = input("Ingrese el nombre del jugador: o presiona 2 enter para continuar: ")
-            num_jugador = input("Ingrese el número del jugador  o presiona enter para continuar: ")
-
-            while bool(num_jugador):
+            nombre_jugador = input("Ingrese el nombre del jugador: o presiona 3 enter para terminar: ")
+            num_jugador = input("Ingrese el número del jugador o 2 presiona enter para terminar: ")
+            num_goles = input("Ingrese el número del jugador o presiona enter para continuar: ")
+            while bool(num_jugador) and bool(nombre_jugador) and bool(num_goles):
+                jugador_x = []
                 # Se convierte la cadena ingresada a un número entero si es válido
-                numero = cadena_a_entero(cadena=num_jugador)
+                num_jugador = cadena_a_entero_positivo(num_jugador)
+                num_goles = cadena_a_entero_positivo(num_goles)
+                while num_jugador is None:
+                    num_jugador  = input(f"Ingrese nuevamente el numero del jugador: ")
+                    num_jugador = cadena_a_entero_positivo(num_jugador)
+                while num_goles is None:
+                    num_goles  = input(f"Ingrese nuevamente el numero de goles: ")
+                    num_goles = cadena_a_entero_positivo(num_goles)
+                lista_jugadores.append(Jugador(nombre_jugador,num_jugador,num_goles))
+                x.agregar_jugadores(Jugador(nombre_jugador,num_jugador,num_goles))
+                print()
 
-                if numero is None:
-                    print("Formato no válido, intenta nuevamente.")
+                nombre_jugador = input("Ingrese el nombre del jugador o presiona 3 enter para terminar:")
+                num_jugador = input("Ingrese el número del jugador  o presiona 2 enter para terminar:")
+                num_goles = input("Ingrese el número del jugador  o presiona enter para terminar: ")
 
-                jugador_x = Jugador(nombre_jugador,num_jugador)
-                lista_jugadores.agregar_jugadores(jugador_x)
-
-                nombre_jugador = input("Ingrese el nombre del jugador o presiona 2 enter para continuar:")
-                num_jugador = input("Ingrese el número del jugador  o presiona enter para continuar:")
         elif opcion == 2:
-            lista_equipos = Torneo("Lista de equipos")
             nombre_equipo = input("Ingrese el nombre del equipor: o presiona  enter para continuar: ")
 
             while bool(nombre_equipo):
-                equipo_x = Equipo(nombre_equipo)
-                lista_equipos.agregar_equipos(equipo_x)
+                lista_equipos.append(Equipo(nombre_equipo))
+                y.agregar_equipos((Equipo(nombre_equipo)))
                 nombre_equipo = input("Ingrese el nombre del equipor: o presiona  enter para continuar: ")
 
         elif opcion == 3:
-            lista_jugadores.mostrar_jugadores()
-            print()
+            x.mostrar_jugadores()
+
         elif opcion == 4:
-            lista_equipos.mostrar_equipos()
-            print()
+            y.mostrar_equipos()
+
         elif opcion == 5:
-            print()
+            if len(lista_jugadores)> 0 and len(lista_equipos) > 0:
+                x.mostrar_jugadores()
+                agregar_j = input("Ingrese el nombre del jugador que desea agregar")
+                print()
+                y.mostrar_equipos()
+                agregar_e = input("Ingrese el nombre del equipo donde iria el jugador")
+
+                for equipo in lista_equipos:
+                    if equipo.nombre in agregar_e:
+                        for jugadores in lista_jugadores:
+                            if jugadores.nombre in  agregar_j:
+                                equipo.agregar_jugadores(jugadores)
+                        break
+            else:
+                print("No se han creado equipo o jugadores")
+
         elif opcion == 6:
-            print()
+            if len(lista_jugadores) > 0 and len(lista_equipos) > 0:
+                agregar_j = input("Ingrese el nombre del jugador que desea agregar o enter para terminar: ")
+                print()
+                y.mostrar_equipos()
+                agregar_e = input("Ingrese el nombre del equipo donde iria el jugador o enter para terminar: ")
+                while bool(agregar_j) and bool(agregar_e) :
+                    x.mostrar_jugadores()
+                    for equipo in lista_equipos:
+                        if equipo.nombre in agregar_e:
+                            for jugadores in lista_jugadores:
+                                    equipo.agregar_jugadores(jugadores)
+                            break
+                    print()
+                    agregar_j = input("Ingrese el nombre del jugador que desea agregar o enter para terminar: ")
+                    print()
+                    y.mostrar_equipos()
+                    agregar_e = input("Ingrese el nombre del equipo donde iria el jugador o enter para terminar: ")
+            else:
+                print("No se han creado equipo o jugadores")
+
         elif opcion == 7:
-            print()
+            if len(lista_equipos) > 0:
+                y.mostrar_equipos()
+                equipo_nombre = input("Ingrese el nombre del equipo a agregar al torneo: ")
+                while bool(equipo_nombre):
+                    for equipo in lista_equipos:
+                        torneo_principal.agregar_equipos(equipo)
+                    print()
+                    equipo_nombre = input("Ingrese otro equipo o presione enter para finalizar: ")
+            else:
+                print("No se han creado equipos")
+
+
         elif opcion == 8:
-            print()
+            if len(lista_equipos) > 0:
+                y.mostrar_equipos()
+                equipo_nombre = input("Ingrese el nombre del equipo a eliminar del torneo: ")
+                while bool(equipo_nombre):
+                    torneo_principal.eliminar_equipos(equipo_nombre)
+                    equipo_nombre = input("Ingrese otro equipo o presione enter para finalizar: ")
+            else:
+                print("No se han creado equipos")
         elif opcion == 9:
-            print()
+            if len(lista_jugadores) > 0:
+                x.mostrar_jugadores()
+                jugador_nombre = input("Ingrese el nombre del jugador que anotó: ")
+                goles = input("Ingrese la cantidad de goles: ")
+                goles = cadena_a_entero_positivo( goles)
+                while  goles is None:
+                    goles = input(f"Ingrese nuevamente los: ")
+                    goles = cadena_a_entero_positivo(goles)
+
+                for jugador in lista_jugadores:
+                    if jugador.nombre == jugador_nombre:
+                        jugador.anotar_goles(int(goles))
+            else:
+                print("No se han creado equipos")
+
         elif opcion == 10:
-            print()
+            for equipo in lista_equipos:
+                print(equipo.nombre)
+                equipo.total_goles()
+                print()
         elif opcion == 11:
-            print()
+            if len(torneo_principal) > 0:
+                torneo_principal.generar_rol()
+                print()
+            else:
+                print("No hay equipos en el torneo")
         else:
             print("Opción invalida")
         print()

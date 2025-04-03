@@ -17,7 +17,7 @@ from Jugador import Jugador
 
 class Equipo:
     no_id = 0
-    def __init__(self,nombre:str, *jugadores:tuple[Jugador]):
+    def __init__(self,nombre:str, *jugadores:Jugador):
         """
         :param nombre: Nombre del equipo.
         :param jugadores: Lista de jugadores.
@@ -27,7 +27,7 @@ class Equipo:
         self._jugadores = list(jugadores)  # Lista de jugadores del equipo.
         self._id_equipo = int(Equipo.no_id)  # Asigna el ID único al equipo.
 
-    def agregar_jugadores(self, *jugadores:tuple[Jugador]) -> None:
+    def agregar_jugadores(self, *jugadores:Jugador) -> None:
         """
         Agrega jugadores al equipo si no están ya en él.
         :param jugadores: Lista de jugadores a agregar.
@@ -38,7 +38,7 @@ class Equipo:
             else:
                 print(f"El jugador {jugador} forma parte del equipo {self.nombre}.")
 
-    def eliminar_jugadores(self,  *jugadores:tuple[Jugador]) -> None:
+    def eliminar_jugadores(self,  *jugadores:Jugador) -> None:
         """
         Elimina jugadores del equipo si están en él.
         :param jugadores: Lista de jugadores a eliminar.
@@ -64,13 +64,14 @@ class Equipo:
         """
         puntos = 0
         for jugador in self._jugadores:  #Suma los goles de cada jugador.
-            puntos += jugador._goles
+            puntos += jugador.goles
         return int(puntos)
 
     # Métodos de acceso para obtener atributos encapsulados.
     @property
     def nombre(self) -> str:
         return self._nombre
+
     @property
     def id_equipo(self) -> int:
         return self._id_equipo
