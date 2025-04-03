@@ -13,11 +13,21 @@ Los atributos de los jugadores deben estar protegidos, y se debe controlar el ac
 
 class Jugador:
     def __init__(self,nombre: str,numero: int, goles: int = 0):
+        """
+        Constructor de la clase Jugador.
+        :param nombre: Nombre del jugador.
+        :param numero: Número del jugador en el equipo.
+        :param goles: Cantidad de goles anotados (por defecto es 0).
+        """
         self._nombre = nombre
         self._numero = numero
         self._goles = goles
 
     def anotar_goles(self,no_goles: int) -> None:
+        """
+        Incrementa el número de goles anotados por el jugador.
+        :param no_goles: Cantidad de goles a sumar al total.
+        """
         self._goles += no_goles
 
     # Métodos de acceso para obtener atributos encapsulados.
@@ -44,6 +54,10 @@ class Jugador:
 
 
     def __str__(self) -> str:
+        """
+        Devuelve una representación en cadena del jugador.
+        :return: Cadena con la información del jugador.
+        """
         return f"Jugador (Nombre: {self._nombre},  Numero: ({self._numero}), goles = {self._goles})"
 
 def main() -> None:

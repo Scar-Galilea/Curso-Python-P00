@@ -17,10 +17,19 @@ from Jugador import Jugador
 
 class Torneo:
     def __init__(self,nombre:str, *equipos:tuple[Equipo]):
+        """
+        Constructor de la clase Torneo.
+        :param nombre: Nombre del torneo.
+        :param equipos: Equipos que participarán en el torneo.
+        """
         self._nombre = nombre
         self._equipos = list(equipos)
 
     def agregar_equipos(self,*equipos:tuple[Equipo]) -> None:
+        """
+        Agrega uno o más equipos al torneo si no están ya registrados.
+        :param equipos: Lista de equipos a agregar.
+        """
         for equipo in equipos:
             if equipo not in self._equipos:
                 self._equipos.append(equipo)
@@ -28,6 +37,10 @@ class Torneo:
                 print(f"El equipo {equipo} forma parte del equipo {self.nombre}.")
 
     def eliminar_equipos(self, *equipos: tuple[Equipo]) -> None:
+        """
+        Elimina uno o más equipos del torneo si están registrados.
+        :param equipos: Lista de equipos a eliminar.
+        """
         for equipo in equipos:
             if equipo in self._equipos:
                 self._equipos.remove(equipo)
@@ -35,11 +48,17 @@ class Torneo:
                 print(f"El equipo {equipo} no forma parte del equipo {self.nombre}.")
 
     def mostrar_equipos(self) -> None:
+        """
+        Muestra la lista de equipos participantes en el torneo.
+        """
         print(f"*** Lista de jugadores del equipo de {self.nombre} ***")
         for equipo in self._equipos:
             print(equipo)
 
     def generar_rol(self) -> None:
+        """
+        Genera un rol de partidos estilo "todos contra todos", distribuidos en jornadas.
+        """
         numero_de_equipos = len(self._equipos)
         se = int(numero_de_equipos / 2)  # Número de partidos por jornada
         grupo = 0
@@ -76,6 +95,9 @@ class Torneo:
         self._nombre = nombre
 
     def __str__(self) -> str:
+        """
+        Devuelve una representación en cadena del torneo.
+        """
         # Se convierte los elementos de la lista en cadenas (invocando str() para cada uno de ellos) y
         # se unen con ", " a través del métod0 str.join().
         # Este patrón es muy común en Python para obtener una cadena a partir de una lista.

@@ -20,7 +20,7 @@ class Equipo:
     def __init__(self,nombre:str, *jugadores:tuple[Jugador]):
         """
         :param nombre: Nombre del equipo.
-        :param jugadores: Lista de jugadores opcionales que forman parte del equipo al crearlo.
+        :param jugadores: Lista de jugadores.
         """
         Equipo.no_id += 1  # Incrementa el contador de ID de equipos.
         self._nombre = nombre # Nombre del equipo

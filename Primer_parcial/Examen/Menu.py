@@ -53,10 +53,20 @@ from Equipo import Equipo
 from Jugador import Jugador
 
 def menu() -> int:
-    print("***  Bienvenido al torneo  ***")
+    print("***  Bienvenido al torneo: Champios League. ***")
+    print("1) Crear nuevos jugadores.")
+    print("2) Crear nuevo equipo.")
+    print("3) Ver listas de jugadores.")
+    print("4) Ver listas de equipos.")
+    print("5) Agregar jugadores a algún equipo.")
+    print("6) Agregar jugadores a algún equipo.")
+    print("7) Agregar equipos al torneo.")
+    print("8) Eliminar equipos del torneo.")
+    print("9) Anotar goles a un jugador.")
+    print("10) Conocer el número total de goles de los equipos.")
+    print("11) Generar rol de juegos.")
     print("0) Salir.")
-    print("1) Jugar vs la CPU.")
-    print("2) Jugar vs  otro jugador.")
+
     print()
     opcion = input("Elije una opción: ")
 
@@ -68,6 +78,19 @@ def menu() -> int:
         print()
     return int(opcion)
 
+def cadena_a_entero(cadena: str) -> int | None:
+    """
+    Muestra el menu del programa
+    :param cadena: Lo que ingresa el usuario
+    :return: Un número entero o None
+    """
+    no_guiones = cadena.count("-")
+    revisar_cadena = cadena.lstrip("-")
+    if revisar_cadena.isnumeric() and no_guiones in(0,1) :
+        return  int(cadena)
+    else:
+        return None
+
 def main() -> None:
     opcion = None
 
@@ -76,6 +99,50 @@ def main() -> None:
         if opcion == 0:
             print("Fin del programa.")
         elif opcion == 1:
+            lista_jugadores = Equipo("Lista de jugadores")
+            nombre_jugador = input("Ingrese el nombre del jugador: o presiona 2 enter para continuar: ")
+            num_jugador = input("Ingrese el número del jugador  o presiona enter para continuar: ")
+
+            while bool(num_jugador):
+                # Se convierte la cadena ingresada a un número entero si es válido
+                numero = cadena_a_entero(cadena=num_jugador)
+
+                if numero is None:
+                    print("Formato no válido, intenta nuevamente.")
+
+                jugador_x = Jugador(nombre_jugador,num_jugador)
+                lista_jugadores.agregar_jugadores(jugador_x)
+
+                nombre_jugador = input("Ingrese el nombre del jugador o presiona 2 enter para continuar:")
+                num_jugador = input("Ingrese el número del jugador  o presiona enter para continuar:")
+        elif opcion == 2:
+            lista_equipos = Torneo("Lista de equipos")
+            nombre_equipo = input("Ingrese el nombre del equipor: o presiona  enter para continuar: ")
+
+            while bool(nombre_equipo):
+                equipo_x = Equipo(nombre_equipo)
+                lista_equipos.agregar_equipos(equipo_x)
+                nombre_equipo = input("Ingrese el nombre del equipor: o presiona  enter para continuar: ")
+
+        elif opcion == 3:
+            lista_jugadores.mostrar_jugadores()
+            print()
+        elif opcion == 4:
+            lista_equipos.mostrar_equipos()
+            print()
+        elif opcion == 5:
+            print()
+        elif opcion == 6:
+            print()
+        elif opcion == 7:
+            print()
+        elif opcion == 8:
+            print()
+        elif opcion == 9:
+            print()
+        elif opcion == 10:
+            print()
+        elif opcion == 11:
             print()
         else:
             print("Opción invalida")
