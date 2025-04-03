@@ -3,7 +3,12 @@ Nombre: Galilea Peralta Contreras.
 Fecha: 02 de abril del 2025.
 
 Descripción:
+Se desea desarrollar un sistema en Python para gestionar un torneo de fútbol en el que participan varios equipos, y cada equipo está compuesto por jugadores. El sistema debe considerar lo siguiente:
 
+1. Gestionar Jugadores:
+Cada jugador tiene un nombre, un número y una cantidad de goles anotados.
+Los jugadores pueden anotar goles, y el sistema debe actualizar su contador de goles.
+Los atributos de los jugadores deben estar protegidos, y se debe controlar el acceso a ellos mediante métodos de acceso.
 """
 
 class Jugador:
