@@ -16,16 +16,17 @@ Cada equipo debe poder calcular el total de goles anotados por todos sus jugador
 from Jugador import Jugador
 
 class Equipo:
-    no_id = 0
+    no_id = 1
     def __init__(self,nombre:str, *jugadores:Jugador):
         """
         :param nombre: Nombre del equipo.
         :param jugadores: Lista de jugadores.
         """
-        Equipo.no_id += 1  # Incrementa el contador de ID de equipos.
         self._nombre = nombre # Nombre del equipo
         self._jugadores = list(jugadores)  # Lista de jugadores del equipo.
-        self._id_equipo = int(Equipo.no_id)  # Asigna el ID único al equipo.
+        self._id_equipo = Equipo.no_id  # Asigna el ID único al equipo.
+        Equipo.no_id += 1  # Incrementa el contador de ID de equipos.
+
 
     def agregar_jugadores(self, *jugadores:Jugador) -> None:
         """
@@ -76,10 +77,18 @@ class Equipo:
     def id_equipo(self) -> int:
         return self._id_equipo
 
+    @property
+    def jugadores(self) -> list[Jugador]:
+        return self._jugadores
+
     # Métodos modificadores (setter) para cambiar valores de los atributos encapsulados.
     @nombre.setter
     def nombre(self, nombre : str) -> None:
         self._nombre = nombre
+
+    @jugadores.setter
+    def jugadores(self, *jugadores: Jugador) -> None:
+        self._jugadores = jugadores
 
     def __str__(self) -> str:
         """

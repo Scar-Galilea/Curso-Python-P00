@@ -60,43 +60,51 @@ class Torneo:
         Genera un rol de partidos estilo "todos contra todos", distribuidos en jornadas.
         """
         numero_de_equipos = len(self._equipos)
+        equipos = list(self._equipos)  # Copia para no modificar la original
+
+        if numero_de_equipos % 2 != 0:
+            auxiliar = Torneo("Auxiliar")
+            equipos.append(auxiliar)
+            numero_de_equipos = numero_de_equipos + 1
+
         se = int(numero_de_equipos / 2)  # Número de partidos por jornada
         grupo = 0
 
-        if numero_de_equipos % 2 == 0 and numero_de_equipos > 0:
-            equipos = list(self._equipos)  # Copia para no modificar la original
-            if numero_de_equipos % 2 != 0:
-                equipos.append(Equipo("Auxiliar",))
 
-            while grupo < numero_de_equipos - 1:  # Se genera el número correcto de jornadas
-                contador = 0
-                print(f"Jornada {grupo + 1}:")
+        while grupo < numero_de_equipos - 1:  # Se genera el número correcto de jornadas
+            contador = 0
+            print(f"Jornada {grupo + 1}:")
 
-                # Mostrar los enfrentamientos del grupo actual.
+            # Mostrar los enfrentamientos del grupo actual.
 
-                while contador < se:
-                    print(equipos[contador].nombre, end=" vs ")
-                    print(equipos[numero_de_equipos - 1 - contador].nombre)
-                    contador += 1
+            while contador < se:
+                print(equipos[contador].nombre, end=" vs ")
+                print(equipos[numero_de_equipos - 1 - contador].nombre)
+                contador += 1
 
-                # Rotación de equipos, dejando fijo el primero
-                equipos.insert(1, equipos.pop())
-                grupo += 1
-                print()
+            # Rotación de equipos, dejando fijo el primero
+            equipos.insert(1, equipos.pop())
+            grupo += 1
+            print()
 
-
-        else:
-            print("El número de equipos es insuficiente para formar una jornada.")
 
     # Métodos de acceso para obtener atributos encapsulados.
     @property
     def nombre(self) -> str:
         return self._nombre
 
+    @property
+    def equipos(self) -> list[Equipo]:
+        return self._equipos
+
     # Métodos modificadores (setter) para cambiar valores de los atributos encapsulados.
     @nombre.setter
     def nombre(self, nombre : str) -> None:
         self._nombre = nombre
+
+    @equipos.setter
+    def equipos(self, *equipos:Equipo) -> None:
+        self._equipos = equipos
 
     def __str__(self) -> str:
         """
