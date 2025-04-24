@@ -25,6 +25,8 @@ def add_length(str_:str)-> list[str]:
             palabras = rango[aux:cont]
             print(palabras)
             aux = cont
+        https: // www.codewars.com / kata / 559
+        d2284b5bb6799e9000047 / train / python
 
 
     return lista
