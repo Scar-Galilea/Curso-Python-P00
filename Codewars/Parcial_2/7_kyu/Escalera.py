@@ -3,13 +3,12 @@ Nombre: Galilea Peralta Contreras.
 Fecha: 10 de abril del 2025.
 
 Descripción:
-Usando ncomo parámetro en la función pattern, dónde n > 0, complete el código para obtener el patrón:
+Usando n como parámetro en la función pattern, dónde n > 0, complete el código para obtener el patrón:
 
 1
 1*2
 1**3
 1***4
-... and so on...
 
 Nota: No hay nueva línea al final (después de los fines del patrón).
 Ejemplos
@@ -34,21 +33,48 @@ pattern(10):deberá devolver lo siguiente:
 1*********10
 
 """
-def pattern(n: int)-> None:
+def pattern(n: int)-> None | str:
+    """
+    Genera un patrón de texto creciente con asteriscos y números.
+    :param n: Número de líneas del patrón.
+    :return: Cadena con el patrón generado o None si 'n' no es válido.
+    """
     asteriscos = "*"
     total = "1"
     salto = "\n"
+
+    # Se inicia el bucle desde 1 hasta n-1 para agregar las líneas restantes.
     for i in range(1,n):
         total = total + salto + "1" + asteriscos + str(i+1)
         asteriscos += "*"
     return total
+
+def cadena_a_entero(cadena: str) -> int | None:
+    """
+    Muestra el menu del programa.
+    :param cadena: Lo que ingresa el usuario.
+    :return: Un número entero o None.
+    """
+    no_guiones = cadena.count("-")
+    revisar_cadena = cadena.lstrip("-")
+    if revisar_cadena.isnumeric() and no_guiones in(0,1) :
+        return  int(cadena)
+    else:
+        return None
 
 def main() -> None:
     """
     Función principal.
     """
     n = input("Ingrese una frase: ") # Solicita la entrada del usuario.
-    print(pattern(int(n)))
+
+    n = cadena_a_entero(n)
+
+    while n is None:
+        n = input(f"Vuelve intentarlo: ")
+        n = cadena_a_entero(n)
+
+    print(pattern(n))
 
 
 
