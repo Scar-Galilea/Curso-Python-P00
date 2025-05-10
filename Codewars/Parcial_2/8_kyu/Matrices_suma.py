@@ -24,16 +24,46 @@ Estamos probando bucles y operaciones matemáticas básicas. Esto es para princi
 Los usuarios avanzados pueden encontrarlo extremadamente fácil y pueden escribirlo fácilmente en una sola línea.
 """
 
-def sum_array(a):
+def sum_array(a: list[int]) -> int:
+    """
+    Calcula la suma de cada elemento que contiene la lista.
+    :param a: Lista de números.
+    :return: Suma de los elementos de s.
+    """
     return sum(a)
+
+def cadena_a_entero(cadena: str) -> int | None:
+    """
+    Muestra el menu del programa.
+    :param cadena: Lo que ingresa el usuario.
+    :return: Un número entero o None.
+    """
+    no_guiones = cadena.count("-")
+    revisar_cadena = cadena.lstrip("-")
+    if revisar_cadena.isnumeric() and no_guiones in(0,1) :
+        return  int(cadena)
+    else:
+        return None
 
 def main() -> None:
     """
     Función principal.
     """
-    n = input("Ingrese: ") # Solicita la entrada del usuario.
-    print(sum_array(n))
+    suma = []
+    num_cadena = input(f"Ingresa un número  o presiona enter para continuar: ")
 
+    while bool(num_cadena):
+        # Se convierte la cadena ingresada a un número entero si es válido
+        numero = cadena_a_entero(cadena=num_cadena)
+
+        if numero is None:
+            print("Formato no válido, intenta nuevamente.")
+        # Si el número es impar, se ignora y no se suma.
+        else:
+            suma.append(numero)
+
+        num_cadena = input(f"Ingresa un  número o presiona enter para continuar: ")
+    print(sum_array(suma))
 """ %%%%%%%     CÓDIGO A NIVEL DE MÓDULO    %%%%%%%%%%%%%%%%%%%%% """
 if __name__ == '__main__':
     main()
