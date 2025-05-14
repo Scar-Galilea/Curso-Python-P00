@@ -11,12 +11,16 @@ def wave(people:str)->list[str]:
     lista = []
     for i in range(len(people)):
         palabra = ""
-        for k in people:
-            if k == people[i]:
-                palabra +=  k.upper()
-            else:
-                palabra += k
-        lista.append(palabra)
+        cont = 0
+        if people[i]!= " ":
+            for k in people:
+                if cont == i:
+                    palabra +=  k.upper()
+                else:
+                    palabra += k
+                cont += 1
+        if len(palabra) != 0:
+            lista.append(palabra)
     return lista
 
 
