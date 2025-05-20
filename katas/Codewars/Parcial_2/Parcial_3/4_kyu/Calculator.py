@@ -48,43 +48,130 @@ Si disfrutas de esto y quieres algo más difícil, por favor vea http://www.code
 
 """
 def calculate(expression):
-    total = 0
-    numero = []
-    cont = 0
-    n = ""
-    for i in expression:
-        if i.isnumeric():
-            n += i
-        elif i != ".":
-            numero.append(int(n))
-            n = ""
+    # Validar caracteres permitidos
+    validos = "0123456789.+-*$"
+    for c in expression:
+        if c not in validos:
+            return "400: Bad request"
 
-    for i in expression:
-        if i.isnumeric():
-            pass
-        elif i == "+":
-            total += numero[cont] + numero[cont+1]
-            cont += 1
-        elif i == "-":
-            total += numero[cont] - numero[cont+1]
-            cont += 1
-        elif i == "*":
-            total += numero[cont] * numero[cont+1]
-            cont += 1
-        elif i == "$":
-            total += numero[cont] * numero[cont+1]
-            cont += 1
-        elif i.isnumeric() or i == ".":
-            pass
+    # Separar números y operadores
+    numeros = []
+    operadores = []
+    numero = ""
+    i = 0
+    while i < len(expression):
+        c = expression[i]
+        if c in "0123456789.":
+            numero += c
+        elif c in "+-*$":
+            if numero == "":
+                return "400: Bad request"
+            punto = 0
+            for j in range(len(numero)):
+                if numero[j] == ".":
+                    punto += 1
+                elif numero[j] not in "0123456789":
+                    return "400: Bad request"
+            if punto > 1:
+                return "400: Bad request"
+            numeros.append(float(numero))
+            operadores.append(c)
+            numero = ""
+        i += 1
+
+    if numero == "":
+        return "400: Bad request"
+    punto = 0
+    for j in range(len(numero)):
+        if numero[j] == ".":
+            punto += 1
+        elif numero[j] not in "0123456789":
+            return "400: Bad request"
+    if punto > 1:
+        return "400: Bad request"
+    numeros.append(float(numero))
+
+    if len(numeros) != len(operadores) + 1:
+        return "400: Bad request"
+
+    # Resolver operaciones por orden: $ -> * -> - -> +
+    i = 0
+    while i < len(operadores):
+        if operadores[i] == "$":
+            if numeros[i + 1] == 0:
+                return "400: Bad request"
+            resultado = numeros[i] / numeros[i + 1]
+            numeros[i] = resultado
+            # Eliminar número siguiente
+            j = i + 1
+            while j < len(numeros) - 1:
+                numeros[j] = numeros[j + 1]
+                j += 1
+            numeros.pop()
+            # Eliminar operador
+            j = i
+            while j < len(operadores) - 1:
+                operadores[j] = operadores[j + 1]
+                j += 1
+            operadores.pop()
         else:
-            total = "400: Bad request"
-            break
+            i += 1
 
-    if len(n) <= 1:
-        total = int(expression)
+    i = 0
+    while i < len(operadores):
+        if operadores[i] == "*":
+            resultado = numeros[i] * numeros[i + 1]
+            numeros[i] = resultado
+            j = i + 1
+            while j < len(numeros) - 1:
+                numeros[j] = numeros[j + 1]
+                j += 1
+            numeros.pop()
+            j = i
+            while j < len(operadores) - 1:
+                operadores[j] = operadores[j + 1]
+                j += 1
+            operadores.pop()
+        else:
+            i += 1
 
-    return total
+    i = 0
+    while i < len(operadores):
+        if operadores[i] == "-":
+            resultado = numeros[i] - numeros[i + 1]
+            numeros[i] = resultado
+            j = i + 1
+            while j < len(numeros) - 1:
+                numeros[j] = numeros[j + 1]
+                j += 1
+            numeros.pop()
+            j = i
+            while j < len(operadores) - 1:
+                operadores[j] = operadores[j + 1]
+                j += 1
+            operadores.pop()
+        else:
+            i += 1
 
+    i = 0
+    while i < len(operadores):
+        if operadores[i] == "+":
+            resultado = numeros[i] + numeros[i + 1]
+            numeros[i] = resultado
+            j = i + 1
+            while j < len(numeros) - 1:
+                numeros[j] = numeros[j + 1]
+                j += 1
+            numeros.pop()
+            j = i
+            while j < len(operadores) - 1:
+                operadores[j] = operadores[j + 1]
+                j += 1
+            operadores.pop()
+        else:
+            i += 1
+
+    return str(numeros[0])
 
 def main() -> None:
     """
