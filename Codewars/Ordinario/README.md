@@ -1,0 +1,1 @@
+Se realizo 2 katas de nivel 6 kyu para el 25 de junio. Son para practicar la lógica, las condiciones y usar listas y palabras.

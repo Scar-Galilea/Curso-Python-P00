@@ -1,0 +1,1 @@
+Los katas de nivel 6 kyu son un poco más difíciles. Me ayudaron a practicar cómo usar listas, palabras etc. En este caso fueron mas faciles debido a que solo eran 2. 

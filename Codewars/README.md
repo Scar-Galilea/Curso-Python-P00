@@ -1,0 +1,1 @@
+Codewars es una plataforma en linea para practicar programación resolviendo retos llamados katas. Los retos tienen diferentes niveles y ayudan a aprender y mejorar con ejercicios fáciles y difíciles.
