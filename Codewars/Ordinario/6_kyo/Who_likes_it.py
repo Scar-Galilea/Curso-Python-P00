@@ -38,8 +38,8 @@ def main() -> None:
     """
     Función principal.
     """
-    print(likes([]))  # no one likes this
-    print(likes(["Peter"]))  # Peter likes this
+    print(likes([]))
+    print(likes(["Peter"]))
 
 """ %%%%%%%     CÓDIGO A NIVEL DE MÓDULO    %%%%%%%%%%%%%%%%%%%%% """
 if __name__ == '__main__':

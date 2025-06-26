@@ -18,11 +18,13 @@ Por ejemplo, decode("h3 th2r2")devolvería "hi there".
 
 Para simplificar, puedes asumir que cualquier número pasado a la función corresponderá a vocales.
 
-
 """
 
 
 def encode(texto):
+    """
+    Función que codifica las vocales de la cadena.
+    """
     resultado = ""
     for letra in texto:
         if letra == "a":
@@ -40,6 +42,9 @@ def encode(texto):
     return resultado
 
 def decode(texto):
+    """
+    Función que descodifica las vocales de la cadena.
+    """
     resultado = ""
     for letra in texto:
         if letra == "1":
@@ -63,11 +68,11 @@ def main() -> None:
     """
     texto_original = "hello"
     texto_codificado = encode(texto_original)
-    print("Texto codificado:", texto_codificado)  # debería imprimir: h2ll4
+    print("Texto codificado:", texto_codificado)
 
     texto_para_decodificar = "h3 th2r2"
     texto_decodificado = decode(texto_para_decodificar)
-    print("Texto decodificado:", texto_decodificado)  # debería imprimir: hi there
+    print("Texto decodificado:", texto_decodificado)
 
 
 """ %%%%%%%     CÓDIGO A NIVEL DE MÓDULO    %%%%%%%%%%%%%%%%%%%%% """
